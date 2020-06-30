@@ -18,7 +18,7 @@
 calc_crosscount<- function(df, grp_var_1, grp_var_2) {
 
   nested_df<- df %>% mutate(identifier = {{ grp_var_1 }} ) %>%
-    nest(data = -{{ grp_var_1 }} ) %>% dplyr::ungroup(identifier)
+    nest(data = -{{ grp_var_1 }} ) #%>% dplyr::ungroup(identifier)
 
   counts_df<- nested_df$data %>% purrr::map_dfr(~ {
 
